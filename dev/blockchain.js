@@ -32,4 +32,22 @@ Blockchain.prototype.createNewBlock = function(nonce, previousBlockHash, hash) {
 
 };
 
+// Get Last Block Method.
+Blockchain.prototype.getLastBlock = function () {
+    return this.chain[this.chain.length - 1]; 
+};
+
+
+// Create New Transaction Method.
+Blockchain.prototype.createNewTransaction = function (amount, sender, recipient) {
+    const transaction = {
+        amount: amount,
+        sender: sender,
+        recipient: recipient,
+    };
+    // push transaction into the new transaction array.
+    this.newTransactions.push(transaction);
+};
+
+
 module.exports = Blockchain; // gives access
