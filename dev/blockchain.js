@@ -10,7 +10,7 @@ class Blockchain {
 
     constructor() {
         this.chain = [];
-        this.newTransactions = []; // pending transactions.
+        this.pendingTransactions = []; // pending transactions.
     }
 
 }
@@ -20,12 +20,12 @@ Blockchain.prototype.createNewBlock = function(nonce, previousBlockHash, hash) {
     const newBlock = {
         index: this.chain.length + 1, // block number in our chain.
         timestamp: Date.now(),
-        transactions: this.newTransactions, // new transactions that are waiting to be put into a new block.
+        transactions: this.pendingTransactions, // new transactions that are pending to be put into a new block.
         nonce: nonce, // comes from a proof of work. (creates the new block)
         hash: hash, // data from the new block, passes new transactions into a hashing function.
         previousBlockHash: previousBlockHash, // 
     };
-    this.newTransactions = []; // clears out transactions.
+    this.pendingTransactions = []; // clears out transactions.
     this.chain.push(newBlock); // pushes the newly created block into the chain.
 
     return newBlock;
@@ -45,9 +45,10 @@ Blockchain.prototype.createNewTransaction = function (amount, sender, recipient)
         sender: sender,
         recipient: recipient,
     };
-    // push transaction into the new transaction array.
-    this.newTransactions.push(newTransaction);
-    return newTransaction;
+    // push new transaction into the pendingTransactions of tbe block.
+    this.pendingTransactions.push(newTransaction);
+
+    return this.getLastBlock()['index'] + 1; // return the num of this block that the new transation will be added too.
 };
 
 
