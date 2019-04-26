@@ -29,4 +29,5 @@ Blockchain.prototype.createNewBlock = function(nonce, previousBlockHash, hash) {
     this.chain.push(newBlock); // pushes the newly created block into the chain.
 
     return newBlock;
+    
 };
