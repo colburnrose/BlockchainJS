@@ -10,7 +10,7 @@ class Blockchain {
 
     constructor() {
         this.chain = [];
-        this.newTransactions = [];
+        this.newTransactions = []; // pending transactions.
     }
 
 }
@@ -40,13 +40,14 @@ Blockchain.prototype.getLastBlock = function () {
 
 // Create New Transaction Method.
 Blockchain.prototype.createNewTransaction = function (amount, sender, recipient) {
-    const transaction = {
+    const newTransaction = {
         amount: amount,
         sender: sender,
         recipient: recipient,
     };
     // push transaction into the new transaction array.
-    this.newTransactions.push(transaction);
+    this.newTransactions.push(newTransaction);
+    return newTransaction;
 };
 
 
