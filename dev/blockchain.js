@@ -56,7 +56,7 @@ Blockchain.prototype.createNewTransaction = function (amount, sender, recipient)
 // Hash Block Method 
 // Takes in a block from the blockchain. 
 // All of the data being passed from the param will come from a single block in the chain.
-// An hashing the data which is essentially hashing a block. An hashes the block into a fixed length string.
+// An hashing the data which is essentially hashing a block. Which then becomes a fixed string.
 Blockchain.prototype.hashBlock = function(previousBlockHash, currentBlockData, nonce) {
     const dataAsString = previousBlockHash + nonce.toString() + JSON.stringify(currentBlockData);
     const hash = sha256(dataAsString);
