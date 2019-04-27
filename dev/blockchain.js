@@ -11,7 +11,7 @@ const sha256 = require('sha256'); // SHA256 hashing function.
 class Blockchain {
 
     constructor() {
-        this.chain = [];
+        this.chain = []; // Each single block is added to the chain after the proof of work has verified the transactions.
         this.pendingTransactions = []; // pending transactions.
     }
 
@@ -35,6 +35,7 @@ Blockchain.prototype.createNewBlock = function(nonce, previousBlockHash, hash) {
 };
 
 // Get Last Block Method.
+// Returns the block at the end of the chain once its been verified that it's a new transaction.
 Blockchain.prototype.getLastBlock = function () {
     return this.chain[this.chain.length - 1]; 
 };
@@ -62,6 +63,24 @@ Blockchain.prototype.hashBlock = function(previousBlockHash, currentBlockData, n
     const hash = sha256(dataAsString);
     return hash;
 };
+
+
+// Proof Of Work Method
+// Repeatedly hash block until it finds correct hash => '01010101010101010101010'
+// Uses current block data for hash, but also the previousBlockHash.
+// Cont.. changes nonce value until it finds the correct hash, returns to us the nonce value that creates the correct hash.
+Blockchain.prototype.proofOfWork = function(previousBlockHash, currentBlockData) {
+    let nonce = 0;
+    let hash = this.hashBlock(previousBlockHash, currentBlockData, nonce);
+
+    while(hash.substring(0, 4) !== '0000'){
+        nonce++; // increment the count.
+        hash = this.hashBlock(previousBlockHash, currentBlockData, nonce);
+        // console.log(hash);
+    }
+
+    return nonce; // Returns nonce val that gives us a valid hash.
+}
 
 
 module.exports = Blockchain; // gives access

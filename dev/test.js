@@ -16,29 +16,61 @@ const Blockchain = require('./blockchain'); // aquiring the blockchain js file.
 
 
 // Testing Hash Method
+// const blockChain = new Blockchain();
+
+// const previousHashBlock = '51654646465421dfdf516';
+// const currentBlockData = [
+//     {
+//         amount: 100,
+//         sender: 'COLBURN1234567',
+//         recipient: 'SEMSA12345678',
+//     },
+//     {
+//         amount: 200,
+//         sender: 'COLBURN987456',
+//         recipient: 'SEMSA987456',
+//     },
+//     {
+//         amount: 300,
+//         sender: 'COLBURN123789',
+//         recipient: 'SEMSA123789',
+//     }
+// ];
+// const nonce = 75;
+
+// blockChain.hashBlock(previousHashBlock, currentBlockData, nonce);
+
+// console.log(blockChain.hashBlock(previousHashBlock, currentBlockData, nonce));
+
+
+
+// Testing Proof Of Work Method
+// Testing for the nonce value associated with the previousBlockHash and currentBlockData.
 const blockChain = new Blockchain();
 
-const previousHashBlock = '51654646465421dfdf516';
+const previousHashData = '122345645468dfd';
 const currentBlockData = [
     {
         amount: 100,
-        sender: 'COLBURN1234567',
-        recipient: 'SEMSA12345678',
+        sender: 'COLBURN123456',
+        recipient: 'SEMSA123456',
     },
     {
         amount: 200,
-        sender: 'COLBURN987456',
-        recipient: 'SEMSA987456',
+        sender: 'COLBURN1234567',
+        recipient: 'SEMSA1234567',
     },
     {
         amount: 300,
-        sender: 'COLBURN123789',
-        recipient: 'SEMSA123789',
-    }
+        sender: 'COLBURN1234568',
+        recipient: 'SEMSA1234568',
+    },
 ];
-const nonce = 75;
 
-blockChain.hashBlock(previousHashBlock, currentBlockData, nonce);
+blockChain.proofOfWork(previousHashData, currentBlockData);
+blockChain.hashBlock(previousHashData, currentBlockData, 56940);
+console.log(blockChain.proofOfWork(previousHashData, currentBlockData));
+console.log(blockChain.hashBlock(previousHashData, currentBlockData, 56940));
 
-console.log(blockChain.hashBlock(previousHashBlock, currentBlockData, nonce));
+
 
