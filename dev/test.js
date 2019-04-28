@@ -46,31 +46,34 @@ const Blockchain = require('./blockchain'); // aquiring the blockchain js file.
 
 // Testing Proof Of Work Method
 // Testing for the nonce value associated with the previousBlockHash and currentBlockData.
+// const blockChain = new Blockchain();
+
+// const previousHashData = '122345645468dfd';
+// const currentBlockData = [
+//     {
+//         amount: 100,
+//         sender: 'COLBURN123456',
+//         recipient: 'SEMSA123456',
+//     },
+//     {
+//         amount: 200,
+//         sender: 'COLBURN1234567',
+//         recipient: 'SEMSA1234567',
+//     },
+//     {
+//         amount: 300,
+//         sender: 'COLBURN1234568',
+//         recipient: 'SEMSA1234568',
+//     },
+// ];
+
+// blockChain.proofOfWork(previousHashData, currentBlockData);
+// blockChain.hashBlock(previousHashData, currentBlockData, 56940); // verifying hashblock with the nonce val associcated with the proof of work. 
+// console.log(blockChain.proofOfWork(previousHashData, currentBlockData));
+// console.log(blockChain.hashBlock(previousHashData, currentBlockData, 56940));
+
+
+// Testing Genesis Block Method.
 const blockChain = new Blockchain();
 
-const previousHashData = '122345645468dfd';
-const currentBlockData = [
-    {
-        amount: 100,
-        sender: 'COLBURN123456',
-        recipient: 'SEMSA123456',
-    },
-    {
-        amount: 200,
-        sender: 'COLBURN1234567',
-        recipient: 'SEMSA1234567',
-    },
-    {
-        amount: 300,
-        sender: 'COLBURN1234568',
-        recipient: 'SEMSA1234568',
-    },
-];
-
-blockChain.proofOfWork(previousHashData, currentBlockData);
-blockChain.hashBlock(previousHashData, currentBlockData, 56940);
-console.log(blockChain.proofOfWork(previousHashData, currentBlockData));
-console.log(blockChain.hashBlock(previousHashData, currentBlockData, 56940));
-
-
-
+console.log(blockChain);
