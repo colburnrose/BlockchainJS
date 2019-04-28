@@ -14,7 +14,7 @@ class Blockchain {
         this.chain = []; // Each single block is added to the chain after the proof of work has verified the transactions.
         this.pendingTransactions = []; // pending transactions.
 
-        this.createNewBlock(100, '0', '0'); // generating the Genesis Block.
+        this.createNewBlock(100, '0', '0'); // generating the Genesis Block. Default arbitrary vals.
     }
 
 }
